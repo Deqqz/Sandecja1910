@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Sandecja – odliczanie do meczu</title>
+
+<style>
+
+body{
+    background:#111;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+}
+
+header{
+    padding:20px;
+}
+
+.logo{
+    width:120px;
+}
+
+h1{
+    font-size:40px;
+}
+
+#countdown{
+    font-size:45px;
+    margin:30px;
+    color:#00ffcc;
+}
+
+table{
+    margin:auto;
+    border-collapse:collapse;
+    width:60%;
+}
+
+th, td{
+    border:1px solid white;
+    padding:10px;
+}
+
+th{
+    background:#333;
+}
+
+footer{
+    margin-top:40px;
+    color:gray;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<img class="logo"
+src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Sandecja-nowy-sacz-herb-klubu-2018.png">
+
+<h1>⚽ Sandecja Nowy Sącz ⚽</h1>
+
+<p>Odliczanie do następnego meczu</p>
+
+<div id="countdown"></div>
+
+</header>
+
+<h2>Następne mecze</h2>
+
+<table>
+
+<tr>
+<th>Data</th>
+<th>Mecz</th>
+</tr>
+
+<tr>
+<td>7.03.2026</td>
+<td>Sandecja vs Hutnik Kraków</td>
+</tr>
+
+<tr>
+<td>14.03.2026</td>
+<td>Chojniczanka vs Sandecja</td>
+</tr>
+
+<tr>
+<td>21.03.2026</td>
+<td>Sandecja vs ŁKS II Łódź</td>
+</tr>
+
+</table>
+
+<footer>
+Strona kibica Sandecji
+</footer>
+
+<script>
+
+var matchDate = new Date("March 14, 2026 17:00:00").getTime();
+
+var x = setInterval(function(){
+
+var now = new Date().getTime();
+var distance = matchDate - now;
+
+var days = Math.floor(distance / (1000*60*60*24));
+var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+var seconds = Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML =
+days+" dni "+hours+" h "+minutes+" min "+seconds+" s";
+
+if(distance < 0){
+clearInterval(x);
+document.getElementById("countdown").innerHTML="MECZ TRWA!";
+}
+
+},1000);
+
+</script>
+
+</body>
+</html>
